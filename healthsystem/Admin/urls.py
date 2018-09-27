@@ -5,4 +5,5 @@ urlpatterns = [
 	url(r'^customer/$',views.CustomerViewSet.as_view(),name='customer'),
 	url(r'^supplier/$',views.SupplierViewSet.as_view(),name='supplier'),
 	url(r'^medicine/$',views.MedicineViewSet.as_view(),name='medicine'),
+	url(r'^doctor/$',views.DoctorViewSet.as_view(),name='doctor'),
 ]

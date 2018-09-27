@@ -25,3 +25,10 @@ class MedicineViewSet(APIView):
 		Medicines = Medicine.objects.all()
 		serializer= MedicineSerializer(Medicines,many=True)
 		return Response(serializer.data)
+
+
+class DoctorViewSet(APIView):
+	def get(self,request,format=None):
+		Medicines = Doctor.objects.all()
+		serializer= DoctorSerializer(Medicines,many=True)
+		return Response(serializer.data)

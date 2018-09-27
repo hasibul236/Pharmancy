@@ -16,3 +16,8 @@ class MedicineSerializer(serializers.ModelSerializer):
 		class Meta:
 			model = Medicine
 			fields = ('name','cost','quantity','company','supply_date','expiry_date')
+
+class DoctorSerializer(serializers.ModelSerializer):
+		class Meta:
+			model = Doctor
+			fields = ('name','designation','consultant','mobile','email','address')

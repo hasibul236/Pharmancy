@@ -13,6 +13,8 @@ class Customer(models.Model):
 	def __str__(self):
 		return self.name
 
+	doctor_refer.verbose_name='Doctor Reffer'
+
 class Medicine(models.Model):
 	MEDICINETYPE=(('Tablet','Tablet'),('Syrup','Syrup'),('Injection','Injection'),('Shampoo','Shampoo'),('Capsule','Capsule'),('Not Define','Not Define'))
 	name = models.CharField(max_length=512)
@@ -20,7 +22,7 @@ class Medicine(models.Model):
 	quantity = models.IntegerField()
 	type=models.CharField(choices=MEDICINETYPE,max_length=25,default='Not Define')
 	generic=models.CharField(max_length=512,null=True,blank=True)
-	batch_no=models.CharField(max_length=512)
+	batch_no=models.CharField(max_length=512,null=True,blank=True)
 	company = models.CharField(max_length=512)
 	supply_date =models.DateField()
 	expiry_date =models.DateField(blank=True,null=True)
@@ -56,6 +58,7 @@ class Supplier(models.Model):
 class Doctor(models.Model):
 	DOCTORTYPES= (('Aesthetic and Reconstructive Surgery','Aesthetic and Reconstructive Surgery'),('Cardiology','Cardiology'),('Nephrology','Nephrology'),('Urology','Urology'),('ENT','ENT'),('Internal Medicine','Internal Medicine'),('Cardiac Surgery','Cardiac Surgery'),('Bariatric Surgery','Bariatric Surgery'),('Orthopaedics','Orthopaedics'),('Neurology','Neurology'),('Neurosurgery','Neurosurgery'),('Surgical Gastroenterology','Surgical Gastroenterology'),('Liver Transplantation','Liver Transplantation'),('Infectious Disease','Infectious Disease'),('Pain Management','Pain Management'),('Breast Surgery','Breast Surgery'),('Dental Surgery','Dental Surgery'),('Dermatology','Dermatology'),('Diabetology','Diabetology'),('Dietary','Dietary'),('Endocrinology','Endocrinology'),('Gastroenterology','Gastroenterology'),('General Surgery','General Surgery'),('Geriatric Medicine','Geriatric Medicine'),('Haematology','Haematology'),('Hepatology','Hepatology'),('Interventional Radiology','Interventional Radiology'),('Podiatry','Podiatry'),('Psychiatry','Psychiatry'),('Pulmonology','Pulmonology'),('Rheumatology','Rheumatology'),('Vascular Surgery','Vascular Surgery'),('Medical Oncology','Medical Oncology'),('Pediatric Immunology','Pediatric Immunology'),('Ophthalmology','Ophthalmology'),('Pediatric Endocrinology','Pediatric Endocrinology'),('Psychology','Psychology'),('Obstetrics and Gynaecology','Obstetrics and Gynaecology'),('Cardiology Electrophysiology ','Cardiology Electrophysiology '),('Surgical Oncology ','Surgical Oncology '),('Robotic Surgery','Robotic Surgery'))
 	name = models.CharField(max_length=512)
+	picture = models.FileField(upload_to='doctor_images',blank=True,null=True)
 	designation = models.CharField(max_length=512)
 	consultant = models.CharField(choices=DOCTORTYPES,max_length=100)
 	mobile = models.BigIntegerField()
